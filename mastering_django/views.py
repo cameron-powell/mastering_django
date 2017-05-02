@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from datetime import datetime, timedelta
 
@@ -12,8 +13,7 @@ def my_homepage_view(request):
 
 def current_datetime(request):
     now = datetime.now()
-    html = "It is now %s." % now
-    return HttpResponse(html)
+    return render(request, 'current_datetime.html', {'current_date': now})
 
 
 def hours_ahead(request, offset):
